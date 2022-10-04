@@ -10,13 +10,27 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
+    - name: Get current time
+      uses: josStorer/get-current-time@v2.0.1
+      with:
+        format: YYYYMMDD-HH
+        utcOffset: "-05:00"
+    - name: Use current time
+      env:
+        CURRENT_YEAR: "${{ steps.current-time.outputs.year }}"
+        CURRENT_DAY: "${{ steps.current-time.outputs.day }}"
+        CURRENT_MONTH: "${{ steps.current-time.outputs.month }}"
+        CURRENT_HOUR: "${{ steps.current-time.outputs.hour }}"
+        CURRENT_MINUTE: "${{ steps.current-time.outputs.minute }}"
+      run: echo $CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DAY/$CURRENT_HOUR__$CURRENT_MINUTE
     - uses: actions/checkout@v3
       with:
         ref: ${{ github.event.pull_request.head.sha }}
         fetch-depth: '0'
-
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        WITH_V: true
+        WITH_V: false
+
+        
