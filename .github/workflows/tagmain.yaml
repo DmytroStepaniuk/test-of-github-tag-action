@@ -32,6 +32,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: false
-        CUSTOM_TAG: ${{ steps.current-time.outputs.year }}/${{ steps.current-time.outputs.month }}/${{ steps.current-time.outputs.day }}/${{ steps.current-time.outputs.hour }}__${{ steps.current-time.outputs.minute }}
+        CUSTOM_TAG: "${{ steps.current-time.outputs.year }}/${{ steps.current-time.outputs.month }}/${{ steps.current-time.outputs.day }}/${{ steps.current-time.outputs.hour }}__${{ steps.current-time.outputs.minute }}"
 
         
