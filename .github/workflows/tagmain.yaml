@@ -32,5 +32,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: false
+        CUSTOM_TAG: ${{CURRENT_YEAR}}/${{CURRENT_MONTH}}/${{CURRENT_DAY}}/${{CURRENT_HOUR}}__${{CURRENT_MINUTE}}
 
         
